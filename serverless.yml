@@ -53,6 +53,15 @@ functions:
           path: call/status
           method: post
           cors: true
+  callgatherspeech:
+    handler: callgatherspeech.handler
+    description: Process speech from a call
+    timeout: 15
+    events:
+      - http:
+          path: call/gatherspeech
+          method: post
+          cors: true
   smsincoming:
     handler: smsincoming.handler
     description: Process incoming sms

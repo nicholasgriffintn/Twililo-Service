@@ -19,66 +19,68 @@ exports.handler = async (event) => {
       console.log(formData);
       const twiml = new MessagingResponse();
 
-      const message = formData.Body;
+      const message = formData.Body.toLowerCase().trim();
+
+      console.log(message);
 
       switch (message) {
-        case `We're no strangers to love`:
+        case `we're no strangers to love`:
           twiml.message(`You know the rules and so do I`);
           break;
-        case `You know the rules and so do I`:
+        case `you know the rules and so do i`:
           twiml.message(`A full commitment's what I'm thinking of`);
           break;
-        case `A full commitment's what I'm thinking of`:
+        case `a full commitment's what i'm thinking of`:
           twiml.message(`You wouldn't get this from any other guy`);
           break;
-        case `You wouldn't get this from any other guy`:
+        case `you wouldn't get this from any other guy`:
           twiml.message(`I just wanna tell you how I'm feeling`);
           break;
-        case `I just wanna tell you how I'm feeling`:
+        case `i just wanna tell you how i'm feeling`:
           twiml.message(`Gotta make you understand`);
           break;
-        case `Gotta make you understand`:
+        case `gotta make you understand`:
           twiml.message(`Never gonna give you up`);
           break;
-        case `Never gonna give you up`:
+        case `never gonna give you up`:
           twiml.message(`Never gonna let you down`);
           break;
-        case `Never gonna let you down`:
+        case `never gonna let you down`:
           twiml.message(`Never gonna run around and desert you`);
           break;
-        case `Never gonna run around and desert you`:
+        case `never gonna run around and desert you`:
           twiml.message(`Never gonna make you cry`);
           break;
-        case `Never gonna make you cry`:
+        case `never gonna make you cry`:
           twiml.message(`Never gonna say goodbye`);
           break;
-        case `Never gonna say goodbye`:
+        case `never gonna say goodbye`:
           twiml.message(`Never gonna tell a lie and hurt you`);
           break;
-        case `Never gonna tell a lie and hurt you`:
+        case `never gonna tell a lie and hurt you`:
           twiml.message(`We've known each other for so long`);
           break;
-        case `We've known each other for so long`:
+        case `we've known each other for so long`:
           twiml.message(
             `Your heart's been aching but you're too shy to say it`
           );
           break;
-        case `Your heart's been aching but you're too shy to say it`:
+        case `your heart's been aching but you're too shy to say it`:
           twiml.message(`Inside we both know what's been going on`);
           break;
-        case `Inside we both know what's been going on`:
+        case `inside we both know what's been going on`:
           twiml.message(`We know the game and we're gonna play it`);
           break;
-        case `We know the game and we're gonna play it`:
+        case `we know the game and we're gonna play it`:
           twiml.message(`And if you ask me how I'm feeling`);
           break;
-        case `And if you ask me how I'm feeling`:
+        case `and if you ask me how i'm feeling`:
           twiml.message(`Don't tell me you're too blind to see`);
           break;
-        case `Don't tell me you're too blind to see`:
+        case `don't tell me you're too blind to see`:
           twiml.message(`Never gonna give you up`);
           break;
-        case `Never gonna give, never gonna give`:
+        case `never gonna give, never gonna give`:
           twiml.message(`(Give you up)`);
           break;
         default:

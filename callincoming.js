@@ -19,8 +19,33 @@ exports.handler = async (event) => {
 
       // Use the Twilio Node.js SDK to build an XML response
       const twiml = new VoiceResponse();
-      twiml.say({ voice: 'alice' }, `Never gonna give you up.`);
+      const gather = twiml.gather({
+        input: 'speech',
+        action: 'https://twilio.nicholasgriffin.dev/call/gatherspeech',
+      });
+      gather.say(
+        "Welcome to Nicholas Griffin's phone service, please tell us why you're calling"
+      );
+      twiml.say(
+        { voice: 'alice' },
+        `Please hold the line while I transfer your call to Nicholas Griffin................`
+      );
       twiml.play({}, 'https://demo.twilio.com/docs/classic.mp3');
+      twiml.hangup();
+
+      /*
+      For taking messages seriously:
+      */
+      /*
+        twiml.say('Please leave a message at the beep.\nPress the star key when finished.');
+        twiml.record({
+            action: 'http://foo.edu/handleRecording.php',
+            method: 'GET',
+            maxLength: 20,
+            finishOnKey: '*'
+        });
+        twiml.say('I did not receive a recording');
+      */
 
       return {
         statusCode: 200,

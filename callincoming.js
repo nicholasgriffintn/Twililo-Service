@@ -24,12 +24,17 @@ exports.handler = async (event) => {
         action: 'https://twilio.nicholasgriffin.dev/call/gatherspeech',
       });
       gather.say(
-        "Welcome to Nicholas Griffin's phone service, please tell us why you're calling"
+        { voice: 'alice' },
+        "Welcome to Nicholas Griffin's phone service, please tell us why you're calling?"
       );
       twiml.say(
         { voice: 'alice' },
-        `Please hold the line while I transfer your call to Nicholas Griffin................`
+        `Sorry, I didn't get that, Please hold the line while I transfer your call to Nicholas Griffin................`
       );
+      twiml.play({
+        digits:
+          '47447381929129218282727273373478784783437473734www23983928323893289332392932392',
+      });
       twiml.play({}, 'https://demo.twilio.com/docs/classic.mp3');
       twiml.hangup();
 

@@ -1,0 +1,73 @@
+service: serverless-twilio-service
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: prod
+  region: eu-west-1
+  stackName: serverless-twilio-service-stack
+  apiName: serverless-twilio-service-api
+  iamRoleStatements:
+    - Effect: 'Allow'
+      Action:
+        - ses:SendEmail
+        - ses:SendRawEmail
+        - 'dynamodb:*'
+      Resource: 'arn:aws:dynamodb:eu-west-1:175054299308:table/Twillo-Service'
+
+package:
+  patterns:
+    - '!.eslintrc.js'
+    - '!package-lock.json'
+    - '!package.json'
+    - '!yarn.lock'
+
+functions:
+  incomingcall:
+    handler: callincoming.handler
+    description: Process incomming calls
+    timeout: 15
+    events:
+      - http:
+          path: call/incoming
+          method: post
+          cors: true
+  callfail:
+    handler: callfail.handler
+    description: Process failed calls
+    timeout: 15
+    events:
+      - http:
+          path: call/fail
+          method: post
+          cors: true
+  callstatus:
+    handler: callstatus.handler
+    description: Process call status changes
+    timeout: 15
+    events:
+      - http:
+          path: call/status
+          method: post
+          cors: true
+  smsincoming:
+    handler: smsincoming.handler
+    description: Process incoming sms
+    timeout: 15
+    events:
+      - http:
+          path: sms/reply
+          method: post
+          cors: true
+  smsfail:
+    handler: smsfail.handler
+    description: Process failed sms
+    timeout: 15
+    events:
+      - http:
+          path: sms/fail
+          method: post
+          cors: true

@@ -22,28 +22,55 @@ exports.handler = async (event) => {
 
       const twiml = new VoiceResponse();
 
-      if (message !== 'yes') {
+      const voices = [
+        'Polly.Amy',
+        'Polly.Brian',
+        'Polly.Emma-Neural',
+        'Polly.Russell',
+        'Polly.Lotte',
+        'Polly.Joanna',
+        'Polly.Kendra-Neural',
+        'Polly.Geraint',
+        'Polly.Gabrielle-Neural',
+        'Polly.Vicki',
+        'Polly.Karl',
+        'Polly.Bianca-Neural',
+      ];
+
+      if (
+        message &&
+        (message.includes('yes') ||
+          message.includes('yeah') ||
+          message.includes('yup'))
+      ) {
+        twiml.say(
+          { voice: voices[Math.floor(Math.random() * voices.length)] },
+          `Thanks for confirming that you said ${randomWords()}.`
+        );
+        twiml.say(
+          { voice: voices[Math.floor(Math.random() * voices.length)] },
+          `Please wait while I transfer you to Nicholas Griffin.........`
+        );
+        twiml.play(
+          {},
+          'https://cdn.nicholasgriffin.dev/Old-Machine-Booting-Up-www.fesliyanstudios.com.mp3'
+        );
+        twiml.say(
+          { voice: voices[Math.floor(Math.random() * voices.length)] },
+          `LOL, did you really think it would be that easy?`
+        );
+        twiml.play({}, 'https://cdn.nicholasgriffin.dev/classic.mp3');
+        twiml.hangup();
+      } else {
         const gather = twiml.gather({
           input: 'speech',
           action: 'https://twilio.nicholasgriffin.dev/call/gatherspeech',
         });
-        gather.say({ voice: 'alice' }, `Did you say ${randomWords()}?`);
-      } else {
-        twiml.say(
-          { voice: 'alice' },
-          `Thanks for confirming that you said ${randomWords()}.`
-        );
-        twiml.say(
-          { voice: 'alice' },
-          `Please wait while i transfer you to Nicholas Griffin.........`
+        gather.say(
+          { voice: voices[Math.floor(Math.random() * voices.length)] },
+          `Did you say ${randomWords()}?`
         );
       }
-      twiml.play({
-        digits:
-          '47447381929129218282727273373478784783437473734www23983928323893289332392932392',
-      });
-      twiml.play({}, 'https://demo.twilio.com/docs/classic.mp3');
-      twiml.hangup();
 
       return {
         statusCode: 200,

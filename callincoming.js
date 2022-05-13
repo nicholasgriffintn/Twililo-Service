@@ -22,21 +22,13 @@ exports.handler = async (event) => {
       const gather = twiml.gather({
         input: 'speech',
         action: 'https://twilio.nicholasgriffin.dev/call/gatherspeech',
+        actionOnEmptyResult:
+          'https://twilio.nicholasgriffin.dev/call/gatherspeech',
       });
       gather.say(
-        { voice: 'alice' },
+        { voice: 'Polly.Amy-Neural' },
         "Welcome to Nicholas Griffin's phone service, please tell us why you're calling?"
       );
-      twiml.say(
-        { voice: 'alice' },
-        `Sorry, I didn't get that, Please hold the line while I transfer your call to Nicholas Griffin................`
-      );
-      twiml.play({
-        digits:
-          '47447381929129218282727273373478784783437473734www23983928323893289332392932392',
-      });
-      twiml.play({}, 'https://demo.twilio.com/docs/classic.mp3');
-      twiml.hangup();
 
       /*
       For taking messages seriously:

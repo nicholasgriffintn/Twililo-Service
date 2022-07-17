@@ -13,7 +13,7 @@
     "aws-sdk": "2.1135.0",
     "querystring": "0.2.1",
     "random-words": "1.2.0",
-    "twilio": "3.78.0"
+    "twilio": "3.79.0"
   },
   "devDependencies": {
     "eslint": "^8.0.0",

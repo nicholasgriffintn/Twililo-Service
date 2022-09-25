@@ -25,6 +25,6 @@
     "prettier": "^2.3.2",
     "serverless": "^3.0.0",
     "serverless-dotenv-plugin": "^4.0.0",
-    "serverless-offline": "^9.0.0"
+    "serverless-offline": "^10.0.0"
   }
 }

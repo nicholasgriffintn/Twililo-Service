@@ -4365,10 +4365,10 @@ tslib@^2.1.0:
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.3.1.tgz#e8a335add5ceae51aa261d32a490158ef042ef01"
   integrity sha512-77EbyPPpMz+FRFRuAFlWMtmgUWGe9UOG2Z25NqCwiIjRhOf5iKGuzSe5P2w1laq+FkRy4p+PCuVkJSGkzTEKVw==
 
-twilio@3.82.1:
-  version "3.82.1"
-  resolved "https://registry.yarnpkg.com/twilio/-/twilio-3.82.1.tgz#77be64dbacefc4bdbb39f7cc2b1b9194f4fb4d89"
-  integrity sha512-3OIFYUjd0g25x2uZbCqsuT1o5r1r9o2/VDYcl1s+WS6323wxm/dvcMfAlMnLx0+YfG2XB7XS3u7BWZGNJoxtGA==
+twilio@3.83.2:
+  version "3.83.2"
+  resolved "https://registry.yarnpkg.com/twilio/-/twilio-3.83.2.tgz#5c5f77cc5ca50c139006e70ea6b9ac73c2e23186"
+  integrity sha512-8mLEcGVdEAFWYOZJld/SC/4KeBjAXdg/qU4GXUCdXx+XK01/gb1zGlr6GmVGP6PPrexD7fblLShAadmzgvBsxg==
   dependencies:
     axios "^0.26.1"
     dayjs "^1.8.29"
